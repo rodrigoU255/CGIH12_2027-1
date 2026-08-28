@@ -66,8 +66,8 @@ int main() {
 	};
 
 	unsigned int indices[] = {  // note that we start from 0!
-		3,2,1,// second Triangle
-		0,1,2,3,
+		//3,2,1,// second Triangle
+		//0,1,2,3,
 		0,1,3, // mirando izquierda
 		3,2,0 // mirando derecha
 	};
@@ -139,7 +139,7 @@ int main() {
 		//glDrawArrays(GL_LINES, 0, 4);
 
 		//3) Cuadrilatero relleno
-		glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+		//glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
 
 		// 4) Dos triangulos
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
@@ -147,7 +147,7 @@ int main() {
 		
 
         glBindVertexArray(0);
-    s
+    
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 	}
