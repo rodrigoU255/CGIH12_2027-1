@@ -35,10 +35,37 @@ void createTableBase(glm::mat4 model, GLint modelLoc, float degree, glm::vec3 ro
 		glm::vec3(0.75f, -0.9f, -1.0),
 	};
 
-	for (int i = 0; i < amount; i++)
-	{
-		createFigure(model, modelLoc, positions[i], degree, rotation, scale);
-	}
+
+		for (int i = 0; i < amount; i++)
+		{
+			if (i <=4)
+			{
+				createFigure(model, modelLoc, positions[i], degree, rotation, scale);
+			}
+			
+			else {
+				glm::vec3 position = positions[0];
+				float addVal = 0.25f;
+				for (int i = 0; i < amount; i++)
+				{
+					if (position.x < 0.75f and 1.0 == position.z) {
+						position.x = position.x + addVal;
+					}
+					else if(-1.0f< position.z and position.x == 0.75f){
+						position.z = position.z - addVal;
+					}
+					else if (-1.0f == position.z and -0.75f < position.x  ) {
+						position.x = position.x - addVal;
+					}
+					else if (1.0f > position.z and position.x == -0.75f) {
+						position.z = position.z + addVal;
+					}
+					
+					createFigure(model, modelLoc, position, degree, rotation, scale);
+				}
+			}
+		}
+
 
 	//createFigure(model, modelLoc, glm::vec3(-0.75f, -1.0f, 1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f));
 	//createFigure(model, modelLoc, glm::vec3(-0.70f, -1.0f, -1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f));
@@ -251,8 +278,7 @@ int main() {
 		//createFigure(model, modelLoc, glm::vec3(0.75f, -0.9f, 1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f));
 		//createFigure(model, modelLoc, glm::vec3(0.70f, -0.9f, -1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f));
 
-		createTableBase(model, modelLoc, 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f), 2);
-		createTableBase(model, modelLoc, 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f), 2);
+		createTableBase(model, modelLoc, 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f), 24);
 		//createTableBase(model, modelLoc, glm::vec3(-0.75f, -0.9f, 1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f), 2);
 
 
