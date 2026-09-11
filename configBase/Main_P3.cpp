@@ -297,7 +297,8 @@ int main() {
 		createFigure(model, modelLoc, glm::vec3(-2.0f, 2.0f, 0.0f), 30.0, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(2.0f, 2.0f, 2.0f));
 		createFigure(model, modelLoc, glm::vec3(2.0f, 2.0f, 0.0f), 100.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 2.0f, 1.0f));
 		createFigure(model, modelLoc, glm::vec3(2.0f, -2.0f, 0.0f), 5.0, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(4.0f, 2.0f, 4.0f));
-		createFigure(model, modelLoc, glm::vec3(-2.0f, -2.0f, -5.0f), -10.0, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 8.0f));
+		//createFigure(model, modelLoc, glm::vec3(-2.0f, -2.0f, -5.0f), -10.0, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 8.0f));
+		createFigure(model, modelLoc, glm::vec3(2.0f, -2.0f, 5.0f), 3.0, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(4.0f, 2.0f, 4.0f));
 
 		glBindVertexArray(0);
 		// Swap the screen buffers
