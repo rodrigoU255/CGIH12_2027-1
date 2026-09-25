@@ -278,7 +278,7 @@ int main() {
 		//createFigure(model, modelLoc, glm::vec3(0.75f, -0.9f, 1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f));
 		//createFigure(model, modelLoc, glm::vec3(0.70f, -0.9f, -1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f));
 
-		createTableBase(model, modelLoc, 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f), 24);
+		createTableBase(model, modelLoc, 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f), 30);
 		//createTableBase(model, modelLoc, glm::vec3(-0.75f, -0.9f, 1.0f), 0.0, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.2f, 2.0f, 0.2f), 2);
 
 
