@@ -9,7 +9,7 @@
 // Shaders
 #include "Shader.h"
 
-void Inputs(GLFWwindow *window);
+void Inputs(GLFWwindow* window);
 
 
 const GLint WIDTH = 1200, HEIGHT = 800;
@@ -47,7 +47,7 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Modelado jerarquico", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Modelado jerarquico", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
@@ -93,49 +93,49 @@ int main() {
 	// use with Orthographic Projection
 
 
-	
+
 
 	// use with Perspective Projection
 	float vertices[] = {
-		-0.5f, -0.5f, 0.5f, 
-		0.5f, -0.5f, 0.5f,  
-		0.5f,  0.5f, 0.5f,  
-		0.5f,  0.5f, 0.5f,  
-		-0.5f,  0.5f, 0.5f, 
-		-0.5f, -0.5f, 0.5f, 
-		
-	    -0.5f, -0.5f,-0.5f, 
-		 0.5f, -0.5f,-0.5f, 
-		 0.5f,  0.5f,-0.5f, 
-		 0.5f,  0.5f,-0.5f, 
-	    -0.5f,  0.5f,-0.5f, 
-	    -0.5f, -0.5f,-0.5f, 
-		
+		-0.5f, -0.5f, 0.5f,
+		0.5f, -0.5f, 0.5f,
+		0.5f,  0.5f, 0.5f,
+		0.5f,  0.5f, 0.5f,
+		-0.5f,  0.5f, 0.5f,
+		-0.5f, -0.5f, 0.5f,
+
+		-0.5f, -0.5f,-0.5f,
+		 0.5f, -0.5f,-0.5f,
+		 0.5f,  0.5f,-0.5f,
+		 0.5f,  0.5f,-0.5f,
+		-0.5f,  0.5f,-0.5f,
+		-0.5f, -0.5f,-0.5f,
+
 		 0.5f, -0.5f,  0.5f,
 		 0.5f, -0.5f, -0.5f,
 		 0.5f,  0.5f, -0.5f,
 		 0.5f,  0.5f, -0.5f,
 		 0.5f,  0.5f,  0.5f,
 		 0.5f,  -0.5f, 0.5f,
-      
+
 		-0.5f,  0.5f,  0.5f,
 		-0.5f,  0.5f, -0.5f,
 		-0.5f, -0.5f, -0.5f,
 		-0.5f, -0.5f, -0.5f,
 		-0.5f, -0.5f,  0.5f,
 		-0.5f,  0.5f,  0.5f,
-		
+
 		-0.5f, -0.5f, -0.5f,
-		0.5f, -0.5f, -0.5f, 
-		0.5f, -0.5f,  0.5f, 
-		0.5f, -0.5f,  0.5f, 
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f, -0.5f,  0.5f,
 		-0.5f, -0.5f,  0.5f,
 		-0.5f, -0.5f, -0.5f,
-		
+
 		-0.5f,  0.5f, -0.5f,
-		0.5f,  0.5f, -0.5f, 
-		0.5f,  0.5f,  0.5f, 
-		0.5f,  0.5f,  0.5f, 
+		0.5f,  0.5f, -0.5f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
 		-0.5f,  0.5f,  0.5f,
 		-0.5f,  0.5f, -0.5f,
 	};
@@ -154,27 +154,27 @@ int main() {
 	//2.- Copiamos nuestros arreglo de vertices en un buffer de vertices para que OpenGL lo use
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	
+
 
 	//Posicion
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3* sizeof(GLfloat), (GLvoid *)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
-	
+
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 
 	glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs)
 
-	
-	glm::mat4 projection=glm::mat4(1);
+
+	glm::mat4 projection = glm::mat4(1);
 
 	projection = glm::perspective(glm::radians(45.0f), (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1f, 100.0f);//FOV, Radio de aspecto,znear,zfar
-	glm::vec3 color= glm::vec3(0.0f, 0.0f, 1.0f);
+	glm::vec3 color = glm::vec3(0.0f, 0.0f, 1.0f);
 	while (!glfwWindowShouldClose(window))
 	{
-		
+
 		Inputs(window);
 		// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
 		glfwPollEvents();
@@ -182,22 +182,22 @@ int main() {
 		// Render
 		// Clear the colorbuffer
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-		
+
 		ourShader.Use();
-		glm::mat4 model=glm::mat4(1);
-		glm::mat4 view=glm::mat4(1);
+		glm::mat4 model = glm::mat4(1);
+		glm::mat4 view = glm::mat4(1);
 		glm::mat4 modelTemp = glm::mat4(1.0f); //Temp
 		glm::mat4 modelTemp2 = glm::mat4(1.0f); //Temp
 
 
 
 		//View set up 
-		view = glm::translate(view, glm::vec3(movX,movY, movZ));
+		view = glm::translate(view, glm::vec3(movX, movY, movZ));
 		view = glm::rotate(view, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		
+
 		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
 		GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
 		GLint projecLoc = glGetUniformLocation(ourShader.Program, "projection");
@@ -207,10 +207,10 @@ int main() {
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-	
+
 
 		glBindVertexArray(VAO);
-		
+
 		//Model 
 		model = glm::rotate(model, glm::radians(hombro), glm::vec3(0.0f, 0.0, 1.0f)); //hombro
 		modelTemp = model = glm::translate(model, glm::vec3(1.5f, 0.0f, 0.0f));
@@ -247,9 +247,9 @@ int main() {
 
 		//Falange 1
 		modelTemp2 = modelTemp;
-		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.0f, 0.0f));
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, glm::radians(fal1), glm::vec3(0.0f, 0.0, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.15f, 0.15f));
 
 		color = glm::vec3(1.0f, 1.0f, 0.0f);
@@ -258,23 +258,23 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		//Dedo1
-		model  = glm::translate(modelTemp, glm::vec3(0.25f, 0.0f, 0.0f));
+		model = glm::translate(modelTemp, glm::vec3(0.25f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0, 1.0f));
 		modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.00f, 0.00f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.15f, 0.15f));
 
-		color = glm::vec3(1.0f, 1.0f, 0.5f);
+		color = glm::vec3(0.6f, 0.6f, 0.4f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		//Falange 2
-		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.0f, 0.0f));
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.25f, -0.25f));
 		model = glm::rotate(model, glm::radians(fal2), glm::vec3(0.0f, 0.0, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.25f, -0.25f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.15f, 0.15f));
 
-		color = glm::vec3(3.0f, 0.9f, 0.3f);
+		color = glm::vec3(0.2f, 0.9f, 0.3f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -291,9 +291,9 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		//Falange 3
-		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.0f, 0.0f));
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, -0.25f, 0.00f));
 		model = glm::rotate(model, glm::radians(fal3), glm::vec3(0.0f, 0.0, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.25f, -0.25f, 0.125f));
+		modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.15f, 0.15f));
 
 		color = glm::vec3(0.1f, 0.1f, 0.6f);
@@ -307,16 +307,16 @@ int main() {
 		modelTemp = model = glm::translate(model, glm::vec3(0.25f, 0.00f, 0.00f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.15f, 0.15f));
 
-		color = glm::vec3(0.1f, 0.6f, 0.3f);
+		color = glm::vec3(0.6f, 0.1f, 0.6f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
-		
+
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
-	
+
 	}
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -324,79 +324,77 @@ int main() {
 
 	glfwTerminate();
 	return EXIT_SUCCESS;
- }
+}
 
- void Inputs(GLFWwindow *window) {
-	 if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE
-		 glfwSetWindowShouldClose(window, true);
-	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		 movX += 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		 movX -= 0.08f;
-	 if (glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS)
-		 movY += 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-		 movY -= 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		 movZ -= 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		 movZ += 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-		 rot += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-		 rot -= 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
-		 hombro += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
-		 hombro -= 0.18f;
+void Inputs(GLFWwindow* window) {
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE
+		glfwSetWindowShouldClose(window, true);
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		movX += 0.08f;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		movX -= 0.08f;
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		movY += 0.08f;
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		movY -= 0.08f;
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		movZ -= 0.08f;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		movZ += 0.08f;
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		rot += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		rot -= 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+		hombro += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
+		hombro -= 0.18f;
 
-	 if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS)
-		 codo += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
-		 codo -= 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS)
+		codo += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
+		codo -= 0.18f;
 
-	 if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
-		 munieca += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
-		 munieca -= 0.18f;
-
-
-	 //Fal1
-	 if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
-		 fal1 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
-		 fal1 -= 0.18f;
-
-	 //Dedo1
-	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
-		 dedo1 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
-		 dedo1 -= 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
+		munieca += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
+		munieca -= 0.18f;
 
 
-	 //Fal2
-	 if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
-		 fal2 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
-		 fal2 -= 0.18f;
+	//Fal1
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
+		fal1 += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
+		fal1 -= 0.18f;
 
-	 //dedo2
-	 if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
-		 dedo2 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
-		 dedo2 -= 0.18f;
+	//Dedo1
+	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		dedo1 += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		dedo1 -= 0.18f;
 
-	 //Fal3
-	 if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
-		 fal3 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
-		 fal3 -= 0.18f;
+	//Fal2
+	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+		fal2 += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
+		fal2 -= 0.18f;
 
-	 //dedo3
-	 if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
-		 dedo3 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
-		 dedo3 -= 0.18f;
- }
+	//dedo2
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+		dedo2 += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+		dedo2 -= 0.18f;
 
+	//Fal3
+	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+		fal3 += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+		fal3 -= 0.18f;
+
+	//dedo3
+	if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
+		dedo3 += 0.18f;
+	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
+		dedo3 -= 0.18f;
+}
 
