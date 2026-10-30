@@ -29,11 +29,6 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 void MouseCallback(GLFWwindow *window, double xPos, double yPos);
 void DoMovement();
 
-void Dawn_Twilight(glm::vec3 Light) {
-
-}
-
-
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
@@ -160,8 +155,7 @@ int main()
 	Shader lightingShader("Shader/lighting.vs", "Shader/lighting.frag");
 	Shader lampShader("Shader/lamp.vs", "Shader/lamp.frag");
 	
-	//Model Dog((char*)"Models/RedDog.obj");
-	Model Dog((char*)"Models/ball.obj");
+	Model Dog((char*)"Models/RedDog.obj");
 	Model Piso((char*)"Models/piso.obj");
 
 
@@ -214,8 +208,7 @@ int main()
 
 		// Use cooresponding shader when setting uniforms/drawing objects
 		lightingShader.Use();
-
-                  glUniform1i(glGetUniformLocation(lightingShader.Program, "diffuse"), 0);
+		glUniform1i(glGetUniformLocation(lightingShader.Program, "diffuse"), 0);
 		//glUniform1i(glGetUniformLocation(lightingShader.Program, "specular"),1);
 
 		GLint viewPosLoc = glGetUniformLocation(lightingShader.Program, "viewPos");
@@ -224,13 +217,13 @@ int main()
 
 		// Directional light
 		glm::vec3 daylightColor = glm::vec3(0);
-		daylightColor.x = abs(sin(glfwGetTime() * dayCycle.x / 3))*3;
-		daylightColor.y = abs(sin(glfwGetTime() * dayCycle.y / 3))*3;
+		daylightColor.x = abs(sin(glfwGetTime() * dayCycle.x / 3));
+		daylightColor.y = abs(sin(glfwGetTime() * dayCycle.y / 3));
 		daylightColor.z = sin(glfwGetTime() * dayCycle.z / 3);
 
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), daylightColor.x/100.0f, daylightColor.y/ 100.0f, daylightColor.z);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), daylightColor.x/3.0f, daylightColor.y / 3.0f, daylightColor.z / 3.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), daylightColor.x, daylightColor.y, daylightColor.z);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), daylightColor.x / 10, daylightColor.y / 10, daylightColor.z);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 0.1f, 0.1f, 0.1f);
 
 
@@ -302,8 +295,6 @@ int main()
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.quadratic"), 0.0f);
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.cutOff"), glm::cos(glm::radians(12.0f)));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.outerCutOff"), glm::cos(glm::radians(18.0f)));
-
-		//Luz sol
 
 
 		// Set material properties
@@ -489,7 +480,7 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		}
 		else
 		{
-			dayCycle = glm::vec3(0);//Cuado es solo un valor en los 3 vectores pueden dejar solo una componente
+			dayCycle = glm::vec3(0); //Cuado es solo un valor en los 3 vectores pueden dejar solo una componente
 		}
 	}
 }
